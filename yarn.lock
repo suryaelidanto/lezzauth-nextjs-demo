@@ -7566,7 +7566,7 @@ levn@^0.4.1:
 
 "lezzauth@git+https://github.com/lezzauth/lezzauth.git":
   version "0.0.1"
-  resolved "git+https://github.com/lezzauth/lezzauth.git#5f66412cc4008c24c53ebff6ccba4ff61b44af41"
+  resolved "git+https://github.com/lezzauth/lezzauth.git#5b4170ea0c910490f56107749d649dfc5c9c61ce"
   dependencies:
     "@expo/vector-icons" "^13.0.0"
     "@react-native-community/masked-view" "^0.1.11"
