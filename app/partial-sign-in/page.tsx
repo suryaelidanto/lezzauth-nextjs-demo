@@ -6,15 +6,13 @@ export default function Page() {
     return (
         <>
             <SignInProvider>
-                <SignInContainer>
-                    <EmailLabel />
-                    <EmailInput />
+                <EmailLabel />
+                <EmailInput className="border-2 border-red-500" />
 
-                    <PasswordLabel />
-                    <PasswordInput />
+                <PasswordLabel />
+                <PasswordInput />
 
-                    <SignInButton />
-                </SignInContainer>
+                <SignInButton />
             </SignInProvider>
         </>
     )

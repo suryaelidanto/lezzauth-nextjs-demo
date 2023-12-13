@@ -1,6 +1,7 @@
 "use client"
 
 import { LezzAuthProvider } from "lezzauth/nextjs";
+import "./globals.css"
 
 export default function RootLayout({
   children,
