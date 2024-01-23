@@ -1,0 +1,16 @@
+{
+  "name": "My App 1",
+  "theme": {
+    "color": "#f87316",
+    "backgroundColor": "#ffffff",
+    "textColor": "#000000",
+    "textBackgroundColor": "#000000"
+  },
+  "socialConnections": {
+    "oauth_google": {
+      "name": "Google",
+      "enabled": true,
+      "strategy": "oauth_google"
+    }
+  }
+}

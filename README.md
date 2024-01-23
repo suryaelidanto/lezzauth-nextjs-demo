@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Installation
 
-## Getting Started
-
-First, run the development server:
+1. Install `lezzauth` package in your Next.js project:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install lezzauth
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Sign up or log in to our platform [here](https://app.lezzauth.com/sign-up).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Create an application on the dashboard and copy the API KEY from the `Next.js` section.
 
-## Learn More
+3. Place the API KEY inside your `.env` file.
 
-To learn more about Next.js, take a look at the following resources:
+4. Log in to our platform using:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx lezzauth login
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Note: If you use OAuth to log in (e.g., Google OAuth), set your password in the platform -> user settings -> set password, then try login again
 
-## Deploy on Vercel
+5. Generate components for your app:
+```bash
+npx lezzauth dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. Edit your `layout.tsx` file or other Next.js root file. Example:
+```tsx
+"use client"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+import { LezzAuthProvider } from "lezzauth/nextjs";
+import './globals.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  return (
+    <html lang="en">
+      <LezzAuthProvider publishableKey={process.env.NEXT_PUBLIC_LEZZAUTH_PUBLISHABLE_KEY!}>
+        <body>{children}</body>
+      </LezzAuthProvider>
+    </html>
+  );
+}
+```
+
+Inside `globals.css`:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+7. Start your Next.js project with the following command:
+
+```bash
+npm run dev 
+```
+
+## Partial Components
+
+You can also custom per partial component, for example :
+
+### SignIn Partial
+
+```tsx
+"use client"
+
+import { 
+    EmailInput, 
+    EmailLabel, 
+    PasswordInput, 
+    PasswordLabel, 
+    Button as SignInButton, 
+    SignInContainer, 
+    SignInProvider 
+} from "@/lezzauth/_generated/components/sign-in";
+
+export default function Page() {
+    return (
+        <SignInProvider>
+            <EmailLabel />
+            <EmailInput className="border-2 border-black" />
+
+            <PasswordLabel />
+            <PasswordInput style={{ border: "2px solid black" }} />
+
+            <SignInButton />
+        </SignInProvider>
+    )
+}
+```
+
+### SignUp Partial
+
+```tsx
+"use client"
+
+import { 
+    EmailInput,
+    EmailLabel, 
+    PasswordInput, 
+    PasswordLabel, 
+    Button as SignUpButton, 
+    SignUpContainer, 
+    SignUpProvider 
+} from "@/lezzauth/_generated/components/sign-up";
+
+export default function Page() {
+    return (
+        <SignUpProvider>
+            <EmailLabel />
+            <EmailInput />
+
+            <PasswordLabel />
+            <PasswordInput />
+
+            <SignUpButton />
+        </SignUpProvider >
+    )
+}
+```
