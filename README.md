@@ -49,6 +49,52 @@ export default function RootLayout({
 }
 ```
 
+7. Create your pages. Example:
+
+```tsx
+// ./app/sign-in/page.tsx
+
+"use client"
+
+import { SignIn } from "@/lezzauth/_generated/components/sign-in";
+
+export default function Page() {
+    return <SignIn />
+}
+```
+
+```tsx
+// ./app/sign-up/page.tsx
+
+"use client"
+
+import { SignUp } from "@/lezzauth/_generated/components/sign-up";
+
+export default function Page() {
+    return <SignUp />
+}
+```
+
+```tsx
+// ./app/page.tsx
+
+"use client"
+
+import { UserButton } from "@/lezzauth/_generated/components/user-button"
+import { useUser } from "lezzauth/nextjs"
+
+export default function Page() {
+    const { user } = useUser()
+
+    return (
+        <div className="flex justify-between p-3">
+            <h1>Hello {user.email} {":)"}</h1>
+            <UserButton />
+        </div>
+    )
+}
+```
+
 Inside `globals.css`:
 ```css
 @tailwind base;
@@ -56,7 +102,7 @@ Inside `globals.css`:
 @tailwind utilities;
 ```
 
-7. Start your Next.js project with the following command:
+8. Start your Next.js project with the following command:
 
 ```bash
 npm run dev 
