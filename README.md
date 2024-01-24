@@ -95,14 +95,27 @@ export default function Page() {
 }
 ```
 
-Inside `globals.css`:
+8. Inside `globals.css`:
 ```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-8. Start your Next.js project with the following command:
+9. Setup your Next.js middleware.ts:
+```ts
+import { authMiddleware } from "lezzauth/nextjs";
+
+export default authMiddleware({
+  publicRoutes: ["/sign-in", "/sign-up"]
+})
+
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};
+```
+
+10. Start your Next.js project with the following command:
 
 ```bash
 npm run dev 
