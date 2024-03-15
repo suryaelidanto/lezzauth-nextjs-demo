@@ -14,6 +14,10 @@ npm install lezzauth
 
 3. Place the API KEY inside your `.env` file.
 
+```bash
+npm i lezzauth
+```
+
 4. Log in to our platform using:
 
 ```bash
