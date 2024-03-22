@@ -187,8 +187,6 @@ export default function Page() {
 ```
 
 ### Custom Redirection
-
-Next.js : 
 ```env
 NEXT_PUBLIC_LEZZAUTH_SIGN_IN_URL= #default : /sign-in
 NEXT_PUBLIC_LEZZAUTH_SIGN_UP_URL= #default: /sign-up
