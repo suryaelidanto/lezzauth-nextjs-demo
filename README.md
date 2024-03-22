@@ -6,7 +6,7 @@
 npm install lezzauth
 ```
 
-## Usage
+## Preparation
 
 1. Sign up or log in to our platform [here](https://app.lezzauth.com/sign-up).
 
@@ -49,7 +49,16 @@ export default function RootLayout({
 }
 ```
 
-7. Create your pages. Example:
+7. Inside `globals.css`:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## Basic Usage
+
+1. Create your sign-in pages. Example:
 
 ```tsx
 // ./app/sign-in/page.tsx
@@ -63,6 +72,7 @@ export default function Page() {
 }
 ```
 
+2. Create your sign-up pages. Example:
 ```tsx
 // ./app/sign-up/page.tsx
 
@@ -74,7 +84,7 @@ export default function Page() {
     return <SignUp />
 }
 ```
-
+3. Create your homepage. Example:
 ```tsx
 // ./app/page.tsx
 
@@ -95,14 +105,11 @@ export default function Page() {
 }
 ```
 
-8. Inside `globals.css`:
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+## Advance Usage
 
-9. Setup your Next.js middleware.ts:
+### Middleware Protected Route
+
+Create `middleware.ts` in your root Next.js project. Example:
 ```ts
 import { authMiddleware } from "lezzauth/nextjs";
 
@@ -115,17 +122,11 @@ export const config = {
 };
 ```
 
-10. Start your Next.js project with the following command:
-
-```bash
-npm run dev 
-```
-
-## Partial Components
+### Partial Components
 
 You can also custom per partial component, for example :
 
-### SignIn Partial
+#### SignIn Partial
 
 ```tsx
 "use client"
@@ -155,7 +156,7 @@ export default function Page() {
 }
 ```
 
-### SignUp Partial
+#### SignUp Partial
 
 ```tsx
 "use client"
@@ -183,4 +184,15 @@ export default function Page() {
         </SignUpProvider >
     )
 }
+```
+
+### Custom Redirection
+
+Next.js : 
+```env
+NEXT_PUBLIC_LEZZAUTH_SIGN_IN_URL= #default : /sign-in
+NEXT_PUBLIC_LEZZAUTH_SIGN_UP_URL= #default: /sign-up
+NEXT_PUBLIC_LEZZAUTH_PUBLISHABLE_KEY=
+NEXT_PUBLIC_LEZZAUTH_AFTER_SIGN_IN_URL= #default: /
+NEXT_PUBLIC_LEZZAUTH_AFTER_SIGN_UP_URL= #default: /
 ```
